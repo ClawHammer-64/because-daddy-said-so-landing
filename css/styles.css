@@ -1,13 +1,13 @@
 :root {
-  color-scheme: light;
-  --bg: #0f0d10;
-  --bg-alt: #17131a;
-  --text: #f5f1f7;
-  --muted: #c8c2d0;
-  --accent: #d9a6ff;
-  --accent-2: #ff92b6;
-  --card: #1f1823;
-  --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+  --bg: #0a0608;
+  --bg-alt: #14090d;
+  --text: #f8f2f4;
+  --muted: #d1b9c0;
+  --accent: #ff2d55;
+  --accent-2: #ff6a88;
+  --card: #1a0c12;
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -30,8 +30,8 @@ a {
 
 .hero {
   padding: 48px 10vw 72px;
-  background: radial-gradient(circle at top left, rgba(217, 166, 255, 0.25), transparent 60%),
-    radial-gradient(circle at top right, rgba(255, 146, 182, 0.2), transparent 55%);
+  background: radial-gradient(circle at top left, rgba(255, 45, 85, 0.3), transparent 60%),
+    radial-gradient(circle at top right, rgba(255, 106, 136, 0.25), transparent 55%);
 }
 
 .nav {
@@ -129,7 +129,7 @@ h1 {
   height: 260px;
   border-radius: 18px;
   background: url("../assets/hero-placeholder.jpg") center/cover no-repeat,
-    linear-gradient(135deg, rgba(217, 166, 255, 0.35), rgba(255, 146, 182, 0.35));
+    linear-gradient(135deg, rgba(255, 45, 85, 0.35), rgba(255, 106, 136, 0.35));
   margin-bottom: 16px;
 }
 
@@ -182,15 +182,18 @@ h1 {
 }
 
 .card-one {
-  background: linear-gradient(140deg, rgba(255, 146, 182, 0.4), rgba(217, 166, 255, 0.3));
+  background: url("../assets/product-yes-sir.jpg") center/cover no-repeat,
+    linear-gradient(140deg, rgba(255, 45, 85, 0.45), rgba(255, 106, 136, 0.3));
 }
 
 .card-two {
-  background: linear-gradient(140deg, rgba(217, 166, 255, 0.4), rgba(255, 255, 255, 0.1));
+  background: url("../assets/product-good-girl.jpg") center/cover no-repeat,
+    linear-gradient(140deg, rgba(255, 106, 136, 0.35), rgba(255, 255, 255, 0.06));
 }
 
 .card-three {
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.1), rgba(255, 146, 182, 0.35));
+  background: url("../assets/product-daddys-girl.jpg") center/cover no-repeat,
+    linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 45, 85, 0.4));
 }
 
 .split {
@@ -219,7 +222,7 @@ h1 {
 }
 
 .about-card {
-  background: linear-gradient(160deg, rgba(217, 166, 255, 0.25), rgba(255, 146, 182, 0.15));
+  background: linear-gradient(160deg, rgba(255, 45, 85, 0.25), rgba(255, 106, 136, 0.15));
   border-radius: 24px;
   padding: 24px;
   box-shadow: var(--shadow);

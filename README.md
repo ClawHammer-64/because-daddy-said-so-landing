@@ -24,4 +24,6 @@ If you want AI images, generate and drop them into `assets/`:
 - `product-good-girl.jpg`
 - `product-daddys-girl.jpg`
 
+Suggested styles: boudoir‑lux, dark tones, red accents.
+
 Update the CSS `background-image` paths to use the generated images.
