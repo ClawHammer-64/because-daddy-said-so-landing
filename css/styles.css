@@ -182,7 +182,7 @@ h1 {
 }
 
 .card-one {
-  background: url("../assets/product-yes-sir.jpg") center/cover no-repeat,
+  background: url("../assets/1.png") center/cover no-repeat,
     linear-gradient(140deg, rgba(255, 45, 85, 0.45), rgba(255, 106, 136, 0.3));
 }
 
