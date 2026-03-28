@@ -84,6 +84,7 @@ Resources:
               - cloudfront:ListDistributions
               - cloudfront:ListOriginAccessControls
               - cloudfront:ListCachePolicies
+              - cloudfront:GetCachePolicy
               - cloudfront:TagResource
               - cloudfront:UntagResource
             Resource: "*"
