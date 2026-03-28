@@ -187,12 +187,12 @@ h1 {
 }
 
 .card-two {
-  background: url("../assets/product-good-girl.jpg") center/cover no-repeat,
+  background: url("../assets/2.png") center/cover no-repeat,
     linear-gradient(140deg, rgba(255, 106, 136, 0.35), rgba(255, 255, 255, 0.06));
 }
 
 .card-three {
-  background: url("../assets/product-daddys-girl.jpg") center/cover no-repeat,
+  background: url("../assets/3.png") center/cover no-repeat,
     linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 45, 85, 0.4));
 }
 
