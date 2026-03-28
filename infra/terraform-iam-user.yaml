@@ -83,6 +83,7 @@ Resources:
               - cloudfront:DeleteOriginAccessControl
               - cloudfront:ListDistributions
               - cloudfront:ListOriginAccessControls
+              - cloudfront:ListCachePolicies
               - cloudfront:TagResource
               - cloudfront:UntagResource
             Resource: "*"
