@@ -128,7 +128,7 @@ h1 {
 .hero-image {
   height: 260px;
   border-radius: 18px;
-  background: url("../assets/hero-placeholder.jpg") center/cover no-repeat,
+  background: url("../assets/hero.png") center/cover no-repeat,
     linear-gradient(135deg, rgba(255, 45, 85, 0.35), rgba(255, 106, 136, 0.35));
   margin-bottom: 16px;
 }
