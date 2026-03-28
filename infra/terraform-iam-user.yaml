@@ -69,6 +69,7 @@ Resources:
               - s3:GetBucketPolicy
               - s3:GetBucketAcl
               - s3:PutObject
+              - s3:GetObject
             Resource: "*"
 
           - Sid: CloudFront
