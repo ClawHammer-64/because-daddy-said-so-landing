@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: IAM user + least-privilege policy for Terraform in because-daddy-said-so-landing
+
+Parameters:
+  UserName:
+    Type: String
+    Default: terraform-bds-landing
+    Description: IAM user name for Terraform
+
+Resources:
+  TerraformUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Ref UserName
+
+  TerraformPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: terraform-bds-landing
+      Users:
+        - !Ref TerraformUser
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: S3SiteBucket
+            Effect: Allow
+            Action:
+              - s3:CreateBucket
+              - s3:DeleteBucket
+              - s3:GetBucketLocation
+              - s3:ListBucket
+              - s3:PutBucketPublicAccessBlock
+              - s3:PutBucketOwnershipControls
+              - s3:PutBucketPolicy
+              - s3:DeleteBucketPolicy
+              - s3:GetBucketPolicy
+            Resource: "*"
+
+          - Sid: CloudFront
+            Effect: Allow
+            Action:
+              - cloudfront:CreateDistribution
+              - cloudfront:GetDistribution
+              - cloudfront:GetDistributionConfig
+              - cloudfront:UpdateDistribution
+              - cloudfront:DeleteDistribution
+              - cloudfront:CreateOriginAccessControl
+              - cloudfront:GetOriginAccessControl
+              - cloudfront:UpdateOriginAccessControl
+              - cloudfront:DeleteOriginAccessControl
+              - cloudfront:ListDistributions
+              - cloudfront:ListOriginAccessControls
+              - cloudfront:TagResource
+              - cloudfront:UntagResource
+            Resource: "*"
+
+          - Sid: ACM
+            Effect: Allow
+            Action:
+              - acm:RequestCertificate
+              - acm:DescribeCertificate
+              - acm:ListCertificates
+              - acm:DeleteCertificate
+              - acm:AddTagsToCertificate
+              - acm:RemoveTagsFromCertificate
+            Resource: "*"
+
+          - Sid: Route53
+            Effect: Allow
+            Action:
+              - route53:CreateHostedZone
+              - route53:GetHostedZone
+              - route53:DeleteHostedZone
+              - route53:ListHostedZones
+              - route53:ChangeResourceRecordSets
+              - route53:ListResourceRecordSets
+              - route53:GetChange
+            Resource: "*"
+
+Outputs:
+  TerraformUserName:
+    Description: IAM user name
+    Value: !Ref TerraformUser
