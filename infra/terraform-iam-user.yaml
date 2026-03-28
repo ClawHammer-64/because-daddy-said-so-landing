@@ -1,24 +1,57 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: IAM user + least-privilege policy for Terraform in because-daddy-said-so-landing
+Description: GitHub Actions OIDC role for Terraform in because-daddy-said-so-landing
 
 Parameters:
-  UserName:
+  RoleName:
     Type: String
-    Default: terraform-bds-landing
-    Description: IAM user name for Terraform
+    Default: terraform-bds-landing-gha
+    Description: IAM role name for GitHub Actions
+  GitHubOrg:
+    Type: String
+    Default: ClawHammer-64
+    Description: GitHub org/user name
+  GitHubRepo:
+    Type: String
+    Default: because-daddy-said-so-landing
+    Description: GitHub repository name
+  GitHubBranch:
+    Type: String
+    Default: main
+    Description: Branch allowed to assume this role
 
 Resources:
-  TerraformUser:
-    Type: AWS::IAM::User
+  GitHubOidcProvider:
+    Type: AWS::IAM::OIDCProvider
     Properties:
-      UserName: !Ref UserName
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList:
+        - sts.amazonaws.com
+      ThumbprintList:
+        - 6938fd4d98bab03faadb97b34396831e3780aea1
+
+  TerraformRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref RoleName
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Ref GitHubOidcProvider
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub "repo:${GitHubOrg}/${GitHubRepo}:ref:refs/heads/${GitHubBranch}"
 
   TerraformPolicy:
     Type: AWS::IAM::Policy
     Properties:
       PolicyName: terraform-bds-landing
-      Users:
-        - !Ref TerraformUser
+      Roles:
+        - !Ref TerraformRole
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -78,6 +111,9 @@ Resources:
             Resource: "*"
 
 Outputs:
-  TerraformUserName:
-    Description: IAM user name
-    Value: !Ref TerraformUser
+  TerraformRoleArn:
+    Description: IAM role ARN for GitHub Actions
+    Value: !GetAtt TerraformRole.Arn
+  GitHubOidcProviderArn:
+    Description: OIDC provider ARN
+    Value: !Ref GitHubOidcProvider
